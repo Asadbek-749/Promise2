@@ -46,12 +46,11 @@ async function renderProducts() {
     container.appendChild(card);
 
     card.addEventListener("click", () => {
-      window.location.href = `product.html?id=${product.id}`;
+      window.location.href = `about.html?id=${product.id}`;
       console.log("id", product.id);
     });
-
-    return card
   });
 }
 
 renderProducts();
+

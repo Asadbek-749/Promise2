@@ -1,22 +1,32 @@
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
+console.log("Product ID:", productId);
 
-console.log(productId);
-
-
-async function getSingleProduct() {
-  const res = await fetch(`https://dummyjson.com/products/${productId}`);
-  const product = await res.json();
-  showProduct(product);
+async function getProduct() {
+  try {
+    // To'g'ri URL - productId ni URL ga qo'shish kerak
+    const res = await fetch(`http://localhost:5000/products/${productId}`);
+    const data = await res.json();
+    console.log("API response:", data);
+    return data.data; 
+  } catch(err) {
+    console.log("Error:", err);
+  }
 }
 
-getSingleProduct();
+async function showProduct() {
+  const product = await getProduct();
+  
+  if (!product) {
+    console.log("Product topilmadi");
+    return;
+  }
 
-function showProduct(product) {
-  document.querySelector("#title").textContent = product.title;
-  document.querySelector("#price").textContent = `$${product.price}`;
-  document.querySelector("#desc").textContent = product.description;
-  document.querySelector("#img").src = product.images[0];
+
+  document.getElementById("product-title").textContent = product.title;
+  document.getElementById("product-image").src = product.image;
+  document.getElementById("product-description").textContent = product.description;
+  document.getElementById("product-price").textContent = "$" + product.price;
 }
 
-showProduct()
+showProduct();
