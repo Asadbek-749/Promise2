@@ -1,10 +1,9 @@
-const params = new URLSearchParams(window.location.search);
-const productId = params.get("id");
+const p = new URLSearchParams(window.location.search);
+const productId = p.get("id");
 console.log("Product ID:", productId);
 
 async function getProduct() {
   try {
-    // To'g'ri URL - productId ni URL ga qo'shish kerak
     const res = await fetch(`http://localhost:5000/products/${productId}`);
     const data = await res.json();
     console.log("API response:", data);

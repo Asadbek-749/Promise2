@@ -11,14 +11,14 @@
 .product-details img {
   max-width: 100%;
   height: auto;
-  max-height: 400px;
+  max-height: 600px;
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 20px;
 }
 
 .product-details h1 {
-  font-size: 2rem;
+  font-size: 4rem;
   color: #333;
   margin-bottom: 15px;
   animation: none;
@@ -26,11 +26,19 @@
 }
 
 .product-details p {
-  font-size: 1.1rem;
-  color: #666;
+  font-size: 2rem;
+  color: #000000;
   line-height: 1.6;
   margin-bottom: 20px;
-  text-align: left;
+  text-align: center;
+}
+
+.price {
+  font-size: 2rem;
+  color: #8e1717;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .back-btn {
