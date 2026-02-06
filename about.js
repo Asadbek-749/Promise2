@@ -7,24 +7,25 @@ async function getProduct() {
     const res = await fetch(`http://localhost:5000/products/${productId}`);
     const data = await res.json();
     console.log("API response:", data);
-    return data.data; 
-  } catch(err) {
+    return data.data;
+  } catch (err) {
     console.log("Error:", err);
   }
 }
 
 async function showProduct() {
   const product = await getProduct();
-  
+
   if (!product) {
     console.log("Product topilmadi");
     return;
   }
 
-
   document.getElementById("product-title").textContent = product.title;
-  document.getElementById("product-image").src = product.image;
-  document.getElementById("product-description").textContent = product.description;
+  document.getElementById("product-image").src =
+    "http://localhost:5000/" + product.image;
+  document.getElementById("product-description").textContent =
+    product.description;
   document.getElementById("product-price").textContent = "$" + product.price;
 }
 
